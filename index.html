@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You Are Loved</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-top: 20px;
+      }
+      .message-container {
+        max-height: 300px;
+        overflow-y: auto;
+        width: 80%;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        text-align: left;
+        line-height: 1.6;
+        z-index: 1;
+        margin: 20px auto;
+      }
+      .message-container::-webkit-scrollbar {
+        width: 8px;
+      }
+      .message-container::-webkit-scrollbar-thumb {
+        background-color: #ff6f91;
+        border-radius: 4px;
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      /* Position the Yes button (desktop) in the lower left */
+      #yesBtn {
+        background-color: #ff6f91;
+        color: #fff;
+        position: absolute;
+        z-index: 2;
+        bottom: 20px;
+        left: 20px;
+      }
+      #yesBtn:hover {
+        background-color: #ff3e70;
+      }
+      /* The No button will move dynamically */
+      #noBtn {
+        background-color: #ffe66d;
+        color: #333;
+        position: absolute;
+        z-index: 10;
+        white-space: nowrap; /* Prevent text wrapping */
+      }
+      /* Mobile optimization */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2rem;
+          margin-top: 20px;
+          padding-top: 20px;
+        }
+        .message-container {
+          width: 90%;
+          max-height: 400px;
+          padding: 10px;
+          margin: 10px auto;
+        }
+        .btn {
+          padding: 8px 16px;
+          font-size: 0.9rem;
+          margin: 8px;
+        }
+        /* Center the Yes button at the bottom for mobile */
+        #yesBtn {
+          bottom: 200px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        /* For the No button, remove the extra transform so its shape/size remain intact */
+        #noBtn {
+          bottom: 130px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      /* Styles for the falling hearts */
+      .heart {
+        position: fixed;
+        top: -50px;
+        pointer-events: none;
+        font-size: 2rem;
+        animation: fall linear forwards;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh);
+          opacity: 0;
+        }
+      }
+      /* Modal Styles */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 15px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 1.2rem;
+        position: relative;
+        top: 45%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+      }
+      .modal-ok {
+        background-color: #ff6f91;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .modal-ok:hover {
+        background-color: #ff3e70;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello Baby 😚</h1>
+    <div class="message-container">
+      <p>
+        I know you overthink a lot and it is not your fault my baby girl, hum
+        itne durr rehte h ek dusre se physically ki thodu sa overthinking toh
+        hoga hi....but why do you worry my sona when I am here your mona (ji haa
+        Monaaaaa Darlingggg 🙈😘). You know na that I am your bestfriend first
+        and then your lover, main tumhari jhuthi taarif kr bhi kaise skta hu tum
+        khud socho meri cutiepieee......
+        <br /><br />
+        I always wanted, needed, aspired, thought, manifested to have a girl
+        that understands my like no one else, cares for me like my mother, loves
+        me the way I am, makes me the happiest, jiske saath ekdum khulke baat kr
+        saku bina judge hone ka darr liye, whom I can love the way I cannot love
+        anyone else, a person jiske saamne jo main hu jaisa bhi m hu waisa reh
+        saku.....and BOOOMMMM 💥 I got youuuu myy babyyyy😘🧿....
+        <br /><br />
+        I am so grateful ki tum meri zindagi me ho, tum meri zindagi m aaye
+        ekdum sahi time pe and you have always been the greatestttttt mentor, my
+        love, besttessttt bestfriend and the bestesttttt lover anyone could get.
+        I just wanna say main tumse sacche dil se ekdum zorrrrr see bohot saara
+        pyaar karta hu mera bacchaa🫂😘💖......
+        <br /><br />
+        I become the most happiest person in the world when you are with
+        me....pata hh meri shakal apne aap glow krne lagti h😭......I loveee
+        youuu bohot saala mera bacchaaaa isiliyeee kabhi bhi khudko leke
+        insecure yaa overthinking naa karna smjhee nn??????
+      </p>
+    </div>
+    <button id="yesBtn" class="btn" onclick="loveAccepted()">
+      Yes, I love you too babeee!😙
+    </button>
+    <button id="noBtn" class="btn">No tum jhuth keh rhe 😞</button>
+
+    <!-- Custom Modal for beautiful message -->
+    <div id="loveModal" class="modal">
+      <div class="modal-content">
+        <p>
+          Mujhe pata tha tumhe smjh aa jaayega how much I love you🥺🥺.... I
+          lovee youu moree🥺🧿😭😘💖
+        </p>
+        <button class="modal-ok" onclick="closeModal()">Mmuuaahhh 😘</button>
+      </div>
+    </div>
+
+    <script>
+      const noBtn = document.getElementById("noBtn");
+      const yesBtn = document.getElementById("yesBtn");
+      const messageContainer = document.querySelector(".message-container");
+      const loveModal = document.getElementById("loveModal");
+
+      noBtn.addEventListener("mouseover", () => {
+        // Store original dimensions before any changes
+        const originalWidth = noBtn.offsetWidth;
+        const originalHeight = noBtn.offsetHeight;
+
+        // Remove any transform and set fixed dimensions
+        noBtn.style.transform = "none";
+        noBtn.style.width = `${originalWidth}px`;
+        noBtn.style.height = `${originalHeight}px`;
+
+        // Get boundary of message container and Yes button
+        const messageRect = messageContainer.getBoundingClientRect();
+        const yesRect = yesBtn.getBoundingClientRect();
+
+        // Define movement boundaries
+        const minX = 0;
+        const maxX = window.innerWidth - originalWidth;
+        const minY = messageRect.bottom + 10;
+        const maxY = window.innerHeight - originalHeight;
+
+        let xOffset, yOffset;
+        let isOverlapping = true;
+        let attempts = 0;
+
+        do {
+          xOffset = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+          yOffset = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+          const noRect = {
+            left: xOffset,
+            right: xOffset + originalWidth,
+            top: yOffset,
+            bottom: yOffset + originalHeight,
+          };
+
+          isOverlapping = !(
+            noRect.right < yesRect.left ||
+            noRect.left > yesRect.right ||
+            noRect.bottom < yesRect.top ||
+            noRect.top > yesRect.bottom
+          );
+
+          attempts++;
+          if (attempts > 50) {
+            xOffset = minX;
+            yOffset = minY;
+            break;
+          }
+        } while (isOverlapping);
+
+        noBtn.style.left = `${xOffset}px`;
+        noBtn.style.top = `${yOffset}px`;
+      });
+
+      function dropHearts() {
+        // Increase frequency: drop a heart every 100ms for 5 seconds
+        const dropInterval = setInterval(() => {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.textContent = "❤️";
+          // Random horizontal position across the viewport
+          heart.style.left = Math.random() * 100 + "vw";
+          // Randomize font size for variety
+          heart.style.fontSize = Math.random() * 20 + 20 + "px";
+          // Randomize animation duration between 3-5 seconds
+          heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+          document.body.appendChild(heart);
+          // Remove the heart after its animation duration
+          setTimeout(() => {
+            heart.remove();
+          }, 5000);
+        }, 100);
+
+        // Stop dropping hearts after 5 seconds
+        setTimeout(() => {
+          clearInterval(dropInterval);
+        }, 5000);
+      }
+
+      function openModal() {
+        loveModal.style.display = "block";
+      }
+
+      function closeModal() {
+        loveModal.style.display = "none";
+      }
+
+      function loveAccepted() {
+        dropHearts();
+        openModal();
+        // Optionally auto-close the modal after 5 seconds:
+        setTimeout(closeModal, 5000);
+      }
+    </script>
+  </body>
+</html>
