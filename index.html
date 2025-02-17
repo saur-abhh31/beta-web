@@ -161,7 +161,7 @@
     </style>
   </head>
   <body>
-    <h1>Hello Baby 😚</h1>
+    <h1>Hello Babyy 😚</h1>
     <div class="message-container">
       <p>
         I know you overthink a lot and it is not your fault my baby girl, hum
@@ -193,7 +193,7 @@
     <button id="yesBtn" class="btn" onclick="loveAccepted()">
       Yes, I love you too babeee!😙
     </button>
-    <button id="noBtn" class="btn">No tum jhuth keh rhe 😞</button>
+    <button id="noBtn" class="btn">No 😞💔</button>
 
     <!-- Custom Modal for beautiful message -->
     <div id="loveModal" class="modal">
@@ -247,6 +247,7 @@
             bottom: yOffset + originalHeight,
           };
 
+          // Check for overlap with Yes button
           isOverlapping = !(
             noRect.right < yesRect.left ||
             noRect.left > yesRect.right ||
@@ -255,13 +256,15 @@
           );
 
           attempts++;
-          if (attempts > 50) {
-            xOffset = minX;
-            yOffset = minY;
+          // If stuck, move to a safe corner
+          if (attempts > 10) {
+            xOffset = maxX - 10;
+            yOffset = maxY - 10;
             break;
           }
         } while (isOverlapping);
 
+        // Apply new position with original dimensions
         noBtn.style.left = `${xOffset}px`;
         noBtn.style.top = `${yOffset}px`;
       });
