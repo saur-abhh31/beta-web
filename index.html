@@ -14,15 +14,17 @@
         }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(ellipse at center, #1a0b12 0%, #000000 100%); /* moody romantic dark bg */
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
-            perspective: 1000px;
-        }
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at center, #1a0b12 0%, #000000 100%);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;   /* instead of overflow: hidden */
+    overflow-y: auto;
+    perspective: 1000px;
+}
+
 
         /* --- 2. INTRO & BUTTON --- */
         .intro {
@@ -63,14 +65,16 @@
 
         /* --- 3. THE CSS MASTERPIECE ROSE --- */
         .container {
-            display: none; /* Hidden initially */
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+    display: none;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;   /* change from height */
+    padding: 40px 0 80px; /* space for text */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 
         .rose-wrapper {
             position: relative;
@@ -180,14 +184,17 @@
 
         /* --- 4. MESSAGE CARD --- */
         .message {
-            margin-top: 50px;
-            text-align: center;
-            color: #fff;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease 2s;
-            z-index: 50;
-        }
+    margin-top: 30px;   /* reduced from 50px */
+    padding: 0 20px;    /* mobile safety */
+    max-width: 600px;   /* keeps text elegant */
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease 2s;
+    z-index: 50;
+}
+
         .message.show { opacity: 1; transform: translateY(0); }
         
         .message h2 {
@@ -268,7 +275,7 @@
         </div>
 
         <div class="message" id="message">
-            <h2>Happy Rose Day!</h2>
+            <h2>Happy Rose Day Beta!</h2>
             <p>
                 I’m really sorry.<br><br>
                 I know my actions hurt you, and knowing that I made you cry
