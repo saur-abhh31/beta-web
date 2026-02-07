@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You 🌹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. RESET & BASICS --- */
+        *, *::before, *::after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(ellipse at center, #1a0b12 0%, #000000 100%); /* moody romantic dark bg */
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* --- 2. INTRO & BUTTON --- */
+        .intro {
+            position: absolute;
+            text-align: center;
+            z-index: 100;
+            transition: opacity 1s;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #ff3366;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid #ff3366;
+            color: #ff3366;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            background: #ff3366;
+            color: white;
+            box-shadow: 0 0 20px #ff3366;
+        }
+
+        /* --- 3. THE CSS MASTERPIECE ROSE --- */
+        .container {
+            display: none; /* Hidden initially */
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .rose-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            /* Animation to float slightly */
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* The Flower Head */
+        .rose {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%) scale(0); /* Start hidden */
+            transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+
+        .rose.bloom {
+            transform: translateX(-50%) scale(1.5); /* Bloom size */
+        }
+
+        /* Petal Common Styles */
+        .petal {
+            position: absolute;
+            background: linear-gradient(to bottom, #ff0040, #800020);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            border-radius: 50% 50% 0 50%;
+        }
+
+        /* Constructing the Rose Layer by Layer */
+        
+        /* Center Bud */
+        .p-1 {
+            width: 40px; height: 40px;
+            top: 30px; left: 30px;
+            background: #660011;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        
+        /* Inner Circle */
+        .p-2 { width: 40px; height: 60px; top: 10px; left: 10px; transform: rotate(20deg); z-index: 9; }
+        .p-3 { width: 40px; height: 60px; top: 10px; left: 50px; transform: rotate(-20deg); z-index: 9; }
+        
+        /* Middle Circle */
+        .p-4 { width: 50px; height: 60px; top: 0px; left: 0px; transform: rotate(50deg); z-index: 8; }
+        .p-5 { width: 50px; height: 60px; top: -10px; left: 25px; transform: rotate(0deg); z-index: 8; }
+        .p-6 { width: 50px; height: 60px; top: 0px; left: 50px; transform: rotate(-50deg); z-index: 8; }
+
+        /* Outer Layers (The bloom) */
+        .p-7 { width: 60px; height: 70px; top: 20px; left: -20px; transform: rotate(80deg); z-index: 7; }
+        .p-8 { width: 60px; height: 70px; top: 20px; left: 60px; transform: rotate(-80deg); z-index: 7; }
+        .p-9 { width: 60px; height: 70px; top: -20px; left: 20px; transform: rotate(0deg); z-index: 6; }
+        
+        /* Wide Base Petals */
+        .p-10 { width: 80px; height: 80px; top: 20px; left: -30px; transform: rotate(45deg); z-index: 5; background: linear-gradient(135deg, #d30030, #500010); }
+        .p-11 { width: 80px; height: 80px; top: 20px; left: 50px; transform: rotate(-45deg); z-index: 5; background: linear-gradient(-135deg, #d30030, #500010); }
+        .p-12 { width: 80px; height: 80px; top: -30px; left: 10px; transform: rotate(0deg); z-index: 4; background: linear-gradient(to bottom, #ff1a53, #6e001a); }
+
+        /* The Stem */
+        .stem {
+            position: absolute;
+            width: 8px;
+            height: 250px;
+            background: linear-gradient(to right, #004d00, #008000);
+            top: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+            z-index: 1;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Thorns */
+        .thorn {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 10px solid #003300;
+        }
+        .thorn.left { left: -5px; top: 40px; transform: rotate(-45deg); }
+        .thorn.right { right: -5px; top: 100px; transform: rotate(45deg); }
+
+        /* Leaves */
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background: linear-gradient(to bottom right, #008000, #003300);
+            border-radius: 0 50% 0 50%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            z-index: 2;
+            opacity: 0; /* Animate in */
+            transition: opacity 2s ease 1s;
+        }
+
+        .leaf.one { top: 160px; left: 50%; transform: translateX(-50px) rotate(-20deg); }
+        .leaf.two { top: 200px; left: 50%; transform: translateX(8px) rotate(10deg) scaleX(-1); }
+
+        .leaf.show { opacity: 1; }
+
+        /* --- 4. MESSAGE CARD --- */
+        .message {
+            margin-top: 50px;
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease 2s;
+            z-index: 50;
+        }
+        .message.show { opacity: 1; transform: translateY(0); }
+        
+        .message h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ff3366;
+        }
+        .message p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: #ddd;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* --- 5. FALLING CSS PETALS --- */
+        .falling-petal {
+            position: absolute;
+            top: -50px;
+            width: 15px;
+            height: 15px;
+            background: #ff0040;
+            border-radius: 50% 0 50% 0; /* Petal shape */
+            opacity: 0.8;
+            z-index: 0;
+            animation: fall linear forwards;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(720deg); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 51, 102, 0.5); }
+            to { text-shadow: 0 0 20px rgba(255, 51, 102, 1), 0 0 10px white; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="intro" id="intro">
+        <h1>Hey Love...</h1>
+        <button onclick="revealSurprise()">Tap to Open</button>
+    </div>
+
+    <div class="container" id="container">
+        
+        <div class="rose-wrapper">
+            <div class="stem">
+                <div class="thorn left"></div>
+                <div class="thorn right"></div>
+            </div>
+            
+            <div class="leaf one" id="leaf1"></div>
+            <div class="leaf two" id="leaf2"></div>
+
+            <div class="rose" id="rose">
+                <div class="petal p-1"></div>
+                <div class="petal p-2"></div>
+                <div class="petal p-3"></div>
+                <div class="petal p-4"></div>
+                <div class="petal p-5"></div>
+                <div class="petal p-6"></div>
+                <div class="petal p-7"></div>
+                <div class="petal p-8"></div>
+                <div class="petal p-9"></div>
+                <div class="petal p-10"></div>
+                <div class="petal p-11"></div>
+                <div class="petal p-12"></div>
+            </div>
+        </div>
+
+        <div class="message" id="message">
+            <h2>Happy Rose Day!</h2>
+            <p>
+                I’m really sorry.<br><br>
+                I know my actions hurt you, and knowing that I made you cry
+                hurts me more than I can explain.<br><br>
+                You never deserved that pain — especially not from me.<br><br>
+                I can’t undo that moment, but I want you to know this:
+                I see my mistake, I own it, and I’m working to be better —
+                not just in words, but in the way I treat your heart.<br><br>
+                You mean more to me than my ego, my pride, or being right.<br>
+                I choose you. Always.
+            </p>
+            
+        </div>
+
+    </div>
+
+    <script>
+        function revealSurprise() {
+            // Fade out intro
+            const intro = document.getElementById('intro');
+            intro.style.opacity = '0';
+            
+            setTimeout(() => {
+                intro.style.display = 'none';
+                
+                // Show container
+                const container = document.getElementById('container');
+                container.style.display = 'flex';
+
+                // Bloom the rose
+                setTimeout(() => {
+                    document.getElementById('rose').classList.add('bloom');
+                    document.getElementById('leaf1').classList.add('show');
+                    document.getElementById('leaf2').classList.add('show');
+                }, 100);
+
+                // Show message
+                setTimeout(() => {
+                    document.getElementById('message').classList.add('show');
+                }, 1500);
+
+                // Start rain
+                startPetalRain();
+
+            }, 1000);
+        }
+
+        function startPetalRain() {
+            setInterval(() => {
+                const petal = document.createElement('div');
+                petal.classList.add('falling-petal');
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = Math.random() * 3 + 3 + 's';
+                
+                // Random colors for depth
+                const colors = ['#ff0040', '#ff3366', '#b3002d'];
+                petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random size
+                const size = Math.random() * 10 + 10;
+                petal.style.width = size + 'px';
+                petal.style.height = size + 'px';
+
+                document.body.appendChild(petal);
+
+                setTimeout(() => petal.remove(), 6000);
+            }, 200);
+        }
+    </script>
+</body>
+</html>
